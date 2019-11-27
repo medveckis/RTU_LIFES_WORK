@@ -1,25 +1,12 @@
-FROM debian:sid
+FROM node:10
 
-RUN apt-get update && apt-get install -y \
-  openalpr \
-  openalpr-daemon \
-  openalpr-utils \
-  libopenalpr-dev \
-  curl \
-  wget \
-  libssl-dev \
-  git-core \
-  build-essential
+WORKDIR ./RTU_LIFES_WORK
+COPY . .
+COPY package*.json ./
 
-RUN apt-get install -y nodejs npm
-
-RUN mkdir /src
-
-WORKDIR /src
-ADD app/package.json /src/package.json
 RUN npm install
-RUN npm install npm@latest -g
+EXPOSE 8000/tcp
+HEALTHCHECK --interval=30s --timeout=3s \
+CMD curl -f http://localhost/ || exit 1
 
-EXPOSE 3000
-
-CMD npm start
+CMD [ "node", "index.js" ]

@@ -1,6 +1,9 @@
-web:
-  build: .
-  volumes:
-    - "./app:/src/app"
-  ports:
-    - "3030:3000"
+version: '3'
+
+services:
+  server1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8081
