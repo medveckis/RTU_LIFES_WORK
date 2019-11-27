@@ -5,7 +5,7 @@ COPY . .
 COPY package*.json ./
 
 RUN npm install
-EXPOSE 8000/tcp
+EXPOSE 3000/tcp
 HEALTHCHECK --interval=30s --timeout=3s \
 CMD curl -f http://localhost/ || exit 1
 
