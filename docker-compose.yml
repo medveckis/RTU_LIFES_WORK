@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 8000:300
+      - 8000:3000
 
   openalpr:
     container_name: openalpr
