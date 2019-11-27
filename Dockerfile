@@ -18,7 +18,7 @@ RUN mkdir /src
 WORKDIR /src
 ADD app/package.json /src/package.json
 RUN npm install
-RUN npm install supervisor -g
+RUN npm install npm@latest -g
 
 EXPOSE 3000
 
