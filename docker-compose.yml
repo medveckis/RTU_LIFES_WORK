@@ -1,19 +1,16 @@
 version: '3'
 
 services:
-  server1:
+  server:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: server/Dockerfile
     ports:
       - 8000:300
 
   openalpr:
-    container_name: openalpr
-    image: openalpr/commercial-agent:latest
-    volumes:
-      - /home/cctv2/openalpr/config/:/etc/openalpr/
-      - /home/cctv2/openalpr/images/:/var/lib/openalpr/
-    restart: always
-    cap_add:
-      - SYS_NICE
+    build:
+      context: .
+      dockerfile: openalpr/Dockerfile
+    ports:
+      - 8001:301

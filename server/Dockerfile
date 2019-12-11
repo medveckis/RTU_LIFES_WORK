@@ -1,9 +1,10 @@
 FROM node:10
 
-WORKDIR ./RTU_LIFES_WORK
-COPY . .
-COPY package*.json ./
+COPY ./server /server
 
+WORKDIR /server
+
+RUN dir /server
 RUN npm install
 EXPOSE 3000/tcp
 HEALTHCHECK --interval=30s --timeout=3s \
